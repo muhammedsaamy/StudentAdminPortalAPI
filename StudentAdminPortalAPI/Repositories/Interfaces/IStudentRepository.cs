@@ -7,6 +7,7 @@ namespace StudentAdminPortalAPI.Repositories.Interfaces
         // Student Signatures
 
         Task<List<Student>> GetAllStudentsAsync();
+        Task<Student> GetStudentByIdAsync(Guid studentId);
 
 
 
