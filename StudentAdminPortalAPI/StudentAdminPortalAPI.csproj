@@ -20,10 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DomainModels\" />
     <Folder Include="Validators\" />
-    <Folder Include="Profiles\" />
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
 
