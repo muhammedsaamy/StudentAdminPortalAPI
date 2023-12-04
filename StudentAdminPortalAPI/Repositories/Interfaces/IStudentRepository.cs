@@ -8,12 +8,16 @@ namespace StudentAdminPortalAPI.Repositories.Interfaces
 
         Task<List<Student>> GetAllStudentsAsync();
         Task<Student> GetStudentByIdAsync(Guid studentId);
+        Task<Student> UpdateStudentAsync(Guid studentId, Student std);
+
+        Task<bool> isStudentExsists(Guid studentId);
 
 
 
 
 
-
+        //Gender Signatures
+        Task<List<Gender>> GetGendersAsync();
 
     }
 }

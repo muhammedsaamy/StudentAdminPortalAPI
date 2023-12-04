@@ -20,6 +20,22 @@ options.UseSqlServer(connectionStrings));
 //AutoMapper Service
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+
+// CORS
+
+builder.Services.AddCors((options) =>
+{
+    options.AddPolicy("AngularApplication", (builder) =>
+    {
+        builder.WithOrigins("http://localhost:4200/").AllowAnyOrigin()
+                                                     .AllowAnyHeader()
+                                                     .WithMethods("GET", "POST", "PUT", "DELETE")
+                                                     .WithExposedHeaders("*");
+
+    });
+
+});
+
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 
@@ -33,6 +49,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AngularApplication");
 
 app.UseAuthorization();
 
