@@ -12,6 +12,7 @@ namespace StudentAdminPortalAPI.Repositories.Interfaces
 
         Task<bool> isStudentExsists(Guid studentId);
 
+        Task<Student> DeleteStudentAsync(Guid studentId);
 
 
 
