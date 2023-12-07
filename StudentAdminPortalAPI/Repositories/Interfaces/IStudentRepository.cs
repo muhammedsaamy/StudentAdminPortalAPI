@@ -14,7 +14,9 @@ namespace StudentAdminPortalAPI.Repositories.Interfaces
 
         Task<Student> DeleteStudentAsync(Guid studentId);
 
+        Task<Student> AddNewStudentAsync(Student newStudent);
 
+        Task<bool> UpdateImgProfile(Guid studentId, string imgProfile);
 
 
         //Gender Signatures

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using StudentAdminPortalAPI.Models;
 using StudentAdminPortalAPI.Repositories;
 using StudentAdminPortalAPI.Repositories.Interfaces;
@@ -37,6 +38,8 @@ builder.Services.AddCors((options) =>
 });
 
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+
 
 
 var app = builder.Build();
@@ -51,6 +54,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("AngularApplication");
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "Resources")),
+    RequestPath = "/Resources"
+});
+
 
 app.UseAuthorization();
 

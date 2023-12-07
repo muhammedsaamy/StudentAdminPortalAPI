@@ -42,6 +42,26 @@ namespace StudentAdminPortalAPI.Repositories
             return null;
         }
 
+        public async Task<Student> AddNewStudentAsync(Student newStudent)
+        {
+            var student = await _context.Students.AddAsync(newStudent);
+            await _context.SaveChangesAsync();
+            return student.Entity;
+        }
+
+        public async Task<bool> UpdateImgProfile(Guid studentId, string imgProfile)
+        {
+            var student = await this.GetStudentByIdAsync(studentId);
+
+            if (student != null)
+            {
+                student.ProfileImgUrl = imgProfile;
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
 
         public async Task<List<Gender>> GetGendersAsync()
         {
